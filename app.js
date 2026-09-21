@@ -1,6 +1,6 @@
 // ============ PRESET ============
 const PRESETS = {
-  groq:   { url:'https://api.groq.com/openai/v1/chat/completions', model:'llama-3.3-70b-versatile' },
+  groq:   { url:'https://api.groq.com/openai/v1/chat/completions', model:'openai/gpt-oss-120b' },
   openai: { url:'https://api.openai.com/v1/chat/completions',       model:'gpt-4o-mini' },
   ollama: { url:'http://localhost:11434/v1/chat/completions',       model:'llama3.2' },
   custom: { url:'',                                                  model:'' }
