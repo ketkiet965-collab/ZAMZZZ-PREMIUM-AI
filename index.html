@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zamzzz AI Pro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>💬 Hội thoại</h2>
+        <button id="newChatBtn" class="btn-new" title="Chat mới">＋</button>
+      </div>
+      <div class="conv-list" id="convList"></div>
+      <div class="sidebar-footer">
+        <button id="themeBtn" class="btn-icon" title="Đổi theme">🌙</button>
+        <button id="settingsBtn" class="btn-icon" title="Cài đặt">⚙️</button>
+        <button id="exportBtn" class="btn-icon" title="Xuất JSON">💾</button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+      <header class="header">
+        <button id="menuBtn" class="btn-icon mobile-only">☰</button>
+        <div class="logo">
+          <span class="logo-icon">😈</span>
+          <div>
+            <h1>Zamzzz AI Pro</h1>
+            <p class="status"><span class="dot"></span> <span id="modelLabel">Groq / Llama 3.3</span></p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="speakToggle" class="btn-icon" title="Đọc phản hồi">🔊</button>
+          <button id="clearBtn" class="btn-icon" title="Xóa chat">🗑️</button>
+        </div>
+      </header>
+
+      <main class="chat" id="chat"></main>
+
+      <footer class="input-area">
+        <button id="uploadBtn" class="btn-icon" title="Đính kèm file/ảnh">📎</button>
+        <input type="file" id="fileInput" hidden accept=".txt,.md,.json,.csv,.log,.js,.py,image/*">
+        <textarea id="userInput" placeholder="Nhập tin nhắn... (Enter gửi, Shift+Enter xuống dòng)" rows="1"></textarea>
+        <button id="micBtn" class="btn-icon" title="Nhập bằng giọng nói">🎤</button>
+        <button id="sendBtn" class="btn-send">➤</button>
+      </footer>
+      <div class="file-preview" id="filePreview"></div>
+    </div>
+  </div>
+
+  <!-- SETTINGS MODAL -->
+  <div class="modal" id="settingsModal">
+    <div class="modal-content">
+      <h2>⚙️ Cài đặt</h2>
+
+      <label>Nhà cung cấp API</label>
+      <select id="providerSelect">
+        <option value="groq">Groq (miễn phí, nhanh)</option>
+        <option value="openai">OpenAI</option>
+        <option value="ollama">Ollama (Local - không giới hạn)</option>
+        <option value="custom">Custom Endpoint</option>
+      </select>
+
+      <label>API URL</label>
+      <input type="text" id="apiUrl" placeholder="https://...">
+
+      <label>API Key</label>
+      <input type="password" id="apiKey" placeholder="gsk_...">
+
+      <label>Model</label>
+      <select id="modelName"></select>
+      <input type="text" id="modelCustom" placeholder="hoặc nhập model tùy chỉnh..." style="margin-top:6px;display:none">
+
+      <label>System Prompt</label>
+      <textarea id="systemPrompt" rows="3">Bạn là Zamzzz AI - trợ lý thông minh, thân thiện, trả lời chính xác bằng tiếng Việt. Dùng markdown để định dạng câu trả lời.</textarea>
+
+      <label>Temperature: <span id="tempVal">0.7</span></label>
+      <input type="range" id="temperature" min="0" max="2" step="0.1" value="0.7">
+
+      <label class="switch-row">
+        <span>🧠 Hiển thị suy nghĩ (Chain of Thought)</span>
+        <input type="checkbox" id="showThinkingToggle" class="switch">
+      </label>
+
+      <label class="switch-row">
+        <span>⚡ Ép suy nghĩ (áp dụng cả model thường)</span>
+        <input type="checkbox" id="forceThinkingToggle" class="switch">
+      </label>
+
+      <label class="switch-row">
+        <span>💾 Nhớ thông tin người dùng</span>
+        <input type="checkbox" id="memoryToggle" class="switch">
+      </label>
+
+      <div class="modal-actions">
+        <button id="cancelSettings" class="btn-secondary">Hủy</button>
+        <button id="saveSettings" class="btn-primary">Lưu</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
