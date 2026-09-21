@@ -10,7 +10,7 @@ const PRESETS = {
 let CONFIG = {
   provider:'groq',
   url:PRESETS.groq.url,
-  key:'',
+  key:'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',
   model:PRESETS.groq.model,
   sysPrompt:'Bạn là ZAMZZZ - trợ lý AI thông minh, thân thiện, trả lời bằng tiếng Việt, dùng markdown.'
 };
